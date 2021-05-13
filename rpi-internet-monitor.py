@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 #original idea:https://www.instructables.com/Raspberry-Pi-Internet-Monitor/
 
-import subprocess
+#import subprocess
 import sys
 import time
 import RPi.GPIO as GPIO
