@@ -77,6 +77,8 @@ def reset(channel):
 debug = True
 
 # main loop: ping sites, turn appropriate lamp on, wait, repeat
+time.sleep(COOL_OFF_TIME)
+
 test = 0
 while True:
   test+=1
