@@ -81,6 +81,6 @@ while True:
   if success <= .50:
     reset(GPIO_MODEM)
   else:
-    print "Connection OK"
+    print ("Connection OK")
   debug_message(debug, "Waiting " + str(DELAY_BETWEEN_TESTS) + " seconds until next test.")
   time.sleep(DELAY_BETWEEN_TESTS)
