@@ -15,6 +15,7 @@ GPIO_MODEM = 4  # switch for shutdown
 GPIO_CHANNEL1 = 22     # led for indicating raspberry pi connected
 GPIO_CHANNEL2 = 6     # led for indicating raspberry pi connected
 GPIO_CHANNEL3 = 26     # led for indicating raspberry pi connected
+RESET_TIME=5           #time spent turned off by modem
 
 # setup the GPIO pins
 GPIO.setup(GPIO_MODEM, GPIO.OUT)
@@ -23,8 +24,8 @@ GPIO.setup(GPIO_CHANNEL2, GPIO.OUT)
 GPIO.setup(GPIO_CHANNEL3, GPIO.OUT)
 
 
-DELAY_BETWEEN_PINGS = 1    # delay in seconds
-DELAY_BETWEEN_TESTS = 5  # delay in seconds
+DELAY_BETWEEN_PINGS = 2    # delay in seconds
+DELAY_BETWEEN_TESTS = 30  # delay in seconds
 
 SITES = ["google.com", "amazon.com", "cloudflare.com"]
 
@@ -62,7 +63,7 @@ def ping_sites(site_list, wait_time, times):
 
 def reset(channel):
    GPIO.output(channel, True)
-   time.sleep(0.5)
+   time.sleep(RESET_TIME)
    GPIO.output(channel, False)
 
 
