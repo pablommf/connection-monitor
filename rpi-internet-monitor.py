@@ -1,18 +1,33 @@
 #!/usr/bin/env python
 #original idea:https://www.instructables.com/Raspberry-Pi-Internet-Monitor/
 
-#import subprocess
+import subprocess
 import sys
 import time
 import RPi.GPIO as GPIO
 
-GPIO_SHUTDOWN_SWITCH = 24  # switch for shutdown
-GPIO_SHUTDOWN_LED = 23     # led for indicating raspberry pi connected
+GPIO.setmode(GPIO.BCM)
+
+GPIO.setwarnings(False)
+
+
+GPIO_MODEM = 4  # switch for shutdown
+GPIO_CHANNEL1 = 22     # led for indicating raspberry pi connected
+GPIO_CHANNEL2 = 6     # led for indicating raspberry pi connected
+GPIO_CHANNEL3 = 26     # led for indicating raspberry pi connected
+
+# setup the GPIO pins
+GPIO.setup(GPIO_MODEM, GPIO.OUT)
+GPIO.setup(GPIO_CHANNEL1, GPIO.OUT)
+GPIO.setup(GPIO_CHANNEL2, GPIO.OUT)
+GPIO.setup(GPIO_CHANNEL3, GPIO.OUT)
+
 
 DELAY_BETWEEN_PINGS = 1    # delay in seconds
-DELAY_BETWEEN_TESTS = 120  # delay in seconds
+DELAY_BETWEEN_TESTS = 5  # delay in seconds
 
 SITES = ["google.com", "amazon.com", "cloudflare.com"]
+
 
 # print messages for debugging when indicator is set
 def debug_message(debug_indicator, output_message):
@@ -54,11 +69,6 @@ if len(sys.argv) > 1:
   else:
     print "unknown option specified: " + sys.argv[1]
     sys.exit(1)
-
-# setup the GPIO pins
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(GPIO_SHUTDOWN_LED, GPIO.OUT)
-GPIO.setup(GPIO_SHUTDOWN_SWITCH, GPIO.OUT)
 
 # main loop: ping sites, turn appropriate lamp on, wait, repeat
 test = 0
