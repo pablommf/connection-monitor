@@ -64,7 +64,7 @@ def reset(channel):
    GPIO.output(channel, True)
    time.sleep(0.5)
    GPIO.output(channel, False)
-  return 1
+return 1
 
 
 # main program starts here
