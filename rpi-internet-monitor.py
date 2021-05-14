@@ -59,16 +59,18 @@ def ping_sites(site_list, wait_time, times):
   return successful_pings / float(attempted_pings)   # return percentage successful 
 
       
+
+def reset(channel):
+   GPIO.output(channel, True)
+   time.sleep(0.5)
+   GPIO.output(channel, False)
+  return 1
+
+
 # main program starts here
 
 # check to see if the user wants to print debugging messages
-debug = False
-if len(sys.argv) > 1:
-  if sys.argv[1] == "-debug":
-    debug = True
-  else:
-    print "unknown option specified: " + sys.argv[1]
-    sys.exit(1)
+debug = True
 
 # main loop: ping sites, turn appropriate lamp on, wait, repeat
 test = 0
@@ -76,11 +78,9 @@ while True:
   test+=1
   debug_message(debug, "----- Test " + str(test) + " -----")
   success = ping_sites(SITES, DELAY_BETWEEN_PINGS, 2)
-  if success == 0:
-    lamp_red_on()
-  elif success <= .50:  
-    lamp_amber_on()
+  if success <= .50:
+    reset(GPIO_MODEM)
   else:
-    lamp_green_on()
+    print "Connection OK"
   debug_message(debug, "Waiting " + str(DELAY_BETWEEN_TESTS) + " seconds until next test.")
   time.sleep(DELAY_BETWEEN_TESTS)
