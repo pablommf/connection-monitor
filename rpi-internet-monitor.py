@@ -39,7 +39,7 @@ def ping(site):
   cmd = "/bin/ping -c 1 " + site
   try:
     output = subprocess.check_output(cmd, stderr=subprocess.STDOUT, shell=True)
-  except subprocess.CalledProcessError, e:
+  except subprocess.CalledProcessError:
     debug_message(debug, site + ": not reachable")
     return 0
   else:
