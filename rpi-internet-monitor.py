@@ -32,7 +32,7 @@ SITES = ["google.com", "amazon.com", "cloudflare.com"]
 # print messages for debugging when indicator is set
 def debug_message(debug_indicator, output_message):
   if debug_indicator:
-    print output_message
+    print (output_message)
 
 # issue Linux ping command to determine internet connection status
 def ping(site):
