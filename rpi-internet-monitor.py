@@ -25,7 +25,7 @@ GPIO.setup(GPIO_CHANNEL3, GPIO.OUT)
 RESET_TIME=3           #time spent turned off by modem
 DELAY_BETWEEN_PINGS = 1    # delay in seconds
 DELAY_BETWEEN_TESTS = 15  # delay in seconds
-COOL_OFF_TIME=100
+COOL_OFF_TIME=120
 
 
 SITES = ["google.com", "amazon.com", "cloudflare.com"]
