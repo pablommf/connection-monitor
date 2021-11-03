@@ -22,10 +22,10 @@ GPIO.setup(GPIO_CHANNEL1, GPIO.OUT)
 GPIO.setup(GPIO_CHANNEL2, GPIO.OUT)
 GPIO.setup(GPIO_CHANNEL3, GPIO.OUT)
 
-RESET_TIME=3           #time spent turned off by modem
-DELAY_BETWEEN_PINGS = 2    # delay in seconds
+RESET_TIME=5           #time spent turned off by modem
+DELAY_BETWEEN_PINGS = 5    # delay in seconds
 DELAY_BETWEEN_TESTS = 30  # delay in seconds
-COOL_OFF_TIME=240
+COOL_OFF_TIME=600
 
 
 SITES = ["google.com", "amazon.com", "cloudflare.com"]
